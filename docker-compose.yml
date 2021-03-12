@@ -1,0 +1,7 @@
+version: '3'
+services:
+  discord-reminder:
+    build:
+      context: .
+    volumes:
+    - D:/reminder-db:/db
