@@ -15,7 +15,7 @@ type SqlLiteRepository struct {
 
 func getSQLLite() *SqlLiteRepository {
 	workDirectory, _ := os.Getwd()
-	sqlLiteDB, err := sql.Open("sqlite3", workDirectory+"\\db\\reminder.db")
+	sqlLiteDB, err := sql.Open("sqlite3", workDirectory+"/db/reminder.db")
 	if err != nil {
 		sqlLiteDB.Close()
 		log.Fatal(err.Error())
@@ -50,7 +50,7 @@ func (repository *SqlLiteRepository) InsertMany(r []model.Reminder) ([]model.Rem
 		return []model.Reminder{}, nil
 	}
 
-	for _, v  := range r {
+	for _, v := range r {
 		repository.InsertOne(v)
 	}
 
@@ -85,7 +85,7 @@ func (repository *SqlLiteRepository) FindWithRemindTimeLessThanNow() []model.Rem
 		})
 	}
 
-		return ret
+	return ret
 }
 
 func (repository *SqlLiteRepository) DeleteWithRemindTimeLessThanNow() {
