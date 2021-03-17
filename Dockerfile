@@ -13,5 +13,6 @@ RUN go build
 
 FROM alpine
 WORKDIR /
-COPY --from=build-env /app/DiscordReminder /DiscordReminder
-ENTRYPOINT ./DiscordReminder
+COPY --from=build-env /app/Blibots /Blibots
+ENV DISCORD_TOKEN=DISCORD_TOKEN_HERE
+ENTRYPOINT ./Blibots
