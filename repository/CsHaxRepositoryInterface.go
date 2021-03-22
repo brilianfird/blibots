@@ -1,8 +1,10 @@
 package repository
 
-import "Blibots/model"
+import (
+	"Blibots/model"
+)
 
-var CsHaxRepositoryObj *CsHaxRepository
+var CsHaxRepositoryObj = new(CsHaxRepository)
 
 type CsHaxRepository interface {
 	GetAll() ([]model.CsHax, error)
@@ -12,6 +14,5 @@ type CsHaxRepository interface {
 }
 
 func InitCsHaxRepository() {
-	var csHaxSqlLite CsHaxRepository = initCsHaxSqlLite()
-	CsHaxRepositoryObj = &csHaxSqlLite
+	*CsHaxRepositoryObj = CsHaxRepository(initCsHaxSqlLite())
 }

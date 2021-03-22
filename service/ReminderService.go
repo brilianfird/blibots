@@ -5,7 +5,7 @@ import (
 	"github.com/bwmarrin/discordgo"
 )
 
-var ReminderServiceObj *ReminderService
+var ReminderServiceObj = new(ReminderService)
 
 type ReminderService interface {
 	InsertMany(reminders []model.Reminder) ([]model.Reminder, error)
@@ -13,8 +13,5 @@ type ReminderService interface {
 }
 
 func initializeReminderService() {
-	var reminderServiceImpl ReminderService = NewReminderServiceImpl()
-	ReminderServiceObj = &reminderServiceImpl
+	*ReminderServiceObj = NewReminderServiceImpl()
 }
-
-

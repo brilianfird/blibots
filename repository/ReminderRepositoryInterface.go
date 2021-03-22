@@ -4,7 +4,7 @@ import (
 	"Blibots/model"
 )
 
-var ReminderRepositoryObj *ReminderRepository
+var ReminderRepositoryObj = new(ReminderRepository)
 
 type ReminderRepository interface {
 	InsertOne(r model.Reminder) (*model.Reminder, error)
@@ -15,7 +15,5 @@ type ReminderRepository interface {
 }
 
 func InitializeReminderRepository() {
-	var r ReminderRepository
-	r = getSQLLite()
-	ReminderRepositoryObj = &r
+	*ReminderRepositoryObj = ReminderRepository(getSQLLite())
 }

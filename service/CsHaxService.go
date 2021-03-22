@@ -5,7 +5,7 @@ import (
 	"github.com/bwmarrin/discordgo"
 )
 
-var CsHaxServiceObj *CsHaxService
+var CsHaxServiceObj *CsHaxService = new(CsHaxService)
 
 type CsHaxService interface {
 	Insert(csHax model.CsHax) (*model.CsHax, error)
@@ -14,6 +14,5 @@ type CsHaxService interface {
 }
 
 func initCsHaxService() {
-	var csHaxService CsHaxService = newCsHaxServiceImpl()
-	CsHaxServiceObj = &csHaxService
+	*CsHaxServiceObj = newCsHaxServiceImpl()
 }
