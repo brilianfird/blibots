@@ -2,13 +2,12 @@ package service
 
 import "github.com/bwmarrin/discordgo"
 
-var MessageParserServiceObj *MessageParserService
+var MessageParserServiceObj = new(MessageParserService)
 
 type MessageParserService interface {
 	ParseMessage(session *discordgo.Session, msg string, channelId string)
 }
 
 func initializeMessageParserService() {
-	var messageParserService MessageParserService = newMessageParserServiceImpl()
-	MessageParserServiceObj = &messageParserService
+	*MessageParserServiceObj = newMessageParserServiceImpl()
 }
